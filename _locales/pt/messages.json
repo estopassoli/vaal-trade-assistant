@@ -1,0 +1,354 @@
+{
+    "extension_name": {
+        "message": "Vaal Trade Assistant",
+        "description": "extension_name"
+    },
+    "extension_description": {
+        "message": "Busca rápida no trade para Path of Exile 2. Pesquise itens do poe.ninja diretamente no site oficial de trade.",
+        "description": "extension_description"
+    },
+    "popup_title": {
+        "message": "Vaal Trade Assistant",
+        "description": "popup title"
+    },
+    "popup_subtitle": {
+        "message": "Busca no Trade PoE2 para poe.ninja",
+        "description": "popup subtitle"
+    },
+    "label_language": {
+        "message": "Idioma",
+        "description": "language label"
+    },
+    "label_trade_type": {
+        "message": "Tipo de Trade",
+        "description": "trade type label"
+    },
+    "opt_instant_and_inperson": {
+        "message": "Buyout Instantâneo & Presencial",
+        "description": "trade type instant buyout and in person"
+    },
+    "opt_instant_only": {
+        "message": "Apenas Buyout Instantâneo",
+        "description": "trade type instant buyout"
+    },
+    "opt_inperson": {
+        "message": "Presencial (Online)",
+        "description": "trade type in person"
+    },
+    "opt_any": {
+        "message": "Qualquer",
+        "description": "trade type any"
+    },
+    "label_league": {
+        "message": "Liga",
+        "description": "league label"
+    },
+    "opt_auto_detect": {
+        "message": "🔄 Detectar automaticamente da URL",
+        "description": "auto detect league"
+    },
+    "opt_current_league": {
+        "message": "(Atual)",
+        "description": "current league suffix"
+    },
+    "info_auto_detect": {
+        "message": "Detecção automática usa a liga da URL do poe.ninja.",
+        "description": "auto detect info"
+    },
+    "label_poesessid": {
+        "message": "POESESSID (Necessário para busca no trade)",
+        "description": "poesessid label"
+    },
+    "placeholder_sessid": {
+        "message": "Digite seu POESESSID",
+        "description": "poesessid placeholder"
+    },
+    "btn_get": {
+        "message": "Obter",
+        "description": "get button"
+    },
+    "btn_save": {
+        "message": "Salvar",
+        "description": "save button"
+    },
+    "info_sessid": {
+        "message": "Clique em \"Obter\" para buscar o POESESSID dos cookies do pathofexile.com automaticamente.",
+        "description": "sessid info"
+    },
+    "label_similar_percent": {
+        "message": "Porcentagem de Busca Similar",
+        "description": "similar percent label"
+    },
+    "info_similar_percent": {
+        "message": "% menor = mais resultados (flexível). % maior = menos resultados (restrito).",
+        "description": "similar percent info"
+    },
+    "label_price_filters": {
+        "message": "Filtros de Preço (Divine Orbs)",
+        "description": "price filters label"
+    },
+    "placeholder_min": {
+        "message": "Mín",
+        "description": "min placeholder"
+    },
+    "placeholder_max": {
+        "message": "Máx",
+        "description": "max placeholder"
+    },
+    "btn_apply": {
+        "message": "Aplicar",
+        "description": "apply button"
+    },
+    "info_price_filters": {
+        "message": "Clique em \"Aplicar\" para atualizar e usar os novos filtros.",
+        "description": "price filters info"
+    },
+    "link_whats_new": {
+        "message": "🆕 Novidades",
+        "description": "whats new link"
+    },
+    "link_report_bug": {
+        "message": "🐞 Reportar Bug",
+        "description": "report bug link"
+    },
+    "status_checking": {
+        "message": "Verificando conexão...",
+        "description": "checking connection"
+    },
+    "status_connected": {
+        "message": "✓ Conectado à API do PoE Trade",
+        "description": "connected status"
+    },
+    "status_no_sessid": {
+        "message": "❌ POESESSID não configurado",
+        "description": "no sessid status"
+    },
+    "status_expired": {
+        "message": "❌ Sessão expirada - atualize o POESESSID",
+        "description": "expired session"
+    },
+    "status_rate_limited": {
+        "message": "✓ API acessível (rate limited)",
+        "description": "rate limited status"
+    },
+    "status_cannot_reach": {
+        "message": "⚠ Não foi possível acessar a API do PoE",
+        "description": "cannot reach api"
+    },
+    "status_sessid_configured": {
+        "message": "✓ ID de Sessão configurado",
+        "description": "sessid configured"
+    },
+    "status_sessid_not_configured": {
+        "message": "⚠ Não configurado - busca no trade não funcionará",
+        "description": "sessid not configured"
+    },
+    "status_fetching": {
+        "message": "Buscando cookie...",
+        "description": "fetching cookie"
+    },
+    "status_cookie_found": {
+        "message": "✓ Cookie encontrado! Clique em Salvar para armazenar.",
+        "description": "cookie found"
+    },
+    "status_cookie_not_found": {
+        "message": "Cookie não encontrado. Abrindo PoE trade...",
+        "description": "cookie not found"
+    },
+    "status_please_login": {
+        "message": "Por favor, faça login no PoE e clique em 'Obter' novamente",
+        "description": "please login"
+    },
+    "status_sessid_saved": {
+        "message": "✓ ID de Sessão salvo!",
+        "description": "sessid saved"
+    },
+    "status_enter_valid_sessid": {
+        "message": "Por favor, digite ou obtenha um ID de Sessão válido",
+        "description": "enter valid sessid"
+    },
+    "status_applying_filters": {
+        "message": "Aplicando filtros...",
+        "description": "applying filters"
+    },
+    "status_filter_saved": {
+        "message": "✓ Salvo: {min} - {max} Divine (atualize para aplicar)",
+        "description": "filter saved"
+    },
+    "status_filter_cleared": {
+        "message": "✓ Filtro limpo (atualize para aplicar)",
+        "description": "filter cleared"
+    },
+    "btn_check": {
+        "message": "Verificar",
+        "description": "check button"
+    },
+    "open_all_btn": {
+        "message": "Abrir Todos os Itens",
+        "description": "open all items button"
+    },
+    "open_all_processing": {
+        "message": "Processando...",
+        "description": "processing"
+    },
+    "open_all_collecting": {
+        "message": "Coletando itens...",
+        "description": "collecting items"
+    },
+    "open_all_no_items": {
+        "message": "Nenhum item encontrado!",
+        "description": "no items found"
+    },
+    "open_all_found": {
+        "message": "Encontrados {count} itens",
+        "description": "items found"
+    },
+    "open_all_progress": {
+        "message": "Processando {current}/{total}",
+        "description": "processing progress"
+    },
+    "open_all_waiting": {
+        "message": "Aguardando rate limit... {seconds}s",
+        "description": "waiting rate limit"
+    },
+    "open_all_done": {
+        "message": "Concluído! Abertos {count} itens.",
+        "description": "done"
+    },
+    "open_all_errors": {
+        "message": "{count} erros",
+        "description": "errors count"
+    },
+    "open_all_success": {
+        "message": "Todos os itens abertos com sucesso!",
+        "description": "all success"
+    },
+    "open_all_cancelled": {
+        "message": "Cancelado! Abertos {count} itens.",
+        "description": "cancelled"
+    },
+    "open_all_cancelling": {
+        "message": "Cancelando...",
+        "description": "cancelling"
+    },
+    "btn_cancel": {
+        "message": "Cancelar",
+        "description": "cancel button"
+    },
+    "tab_settings": {
+        "message": "Configurações",
+        "description": "settings tab"
+    },
+    "tab_history": {
+        "message": "Histórico",
+        "description": "history tab"
+    },
+    "tab_stats": {
+        "message": "Estatísticas",
+        "description": "stats tab"
+    },
+    "stat_searches": {
+        "message": "Buscas",
+        "description": "total searches stat"
+    },
+    "stat_items": {
+        "message": "Itens",
+        "description": "total items stat"
+    },
+    "stat_time_saved": {
+        "message": "Tempo Economizado",
+        "description": "time saved stat"
+    },
+    "empty_history": {
+        "message": "Nenhum histórico de busca ainda. Comece a buscar itens!",
+        "description": "empty history message"
+    },
+    "empty_stats": {
+        "message": "Nenhuma estatística ainda. Comece a usar a extensão!",
+        "description": "empty stats message"
+    },
+    "btn_clear_history": {
+        "message": "Limpar",
+        "description": "clear history button"
+    },
+    "btn_clear_cache": {
+        "message": "Limpar Cache",
+        "description": "clear cache button"
+    },
+    "btn_reset_stats": {
+        "message": "Resetar",
+        "description": "reset stats button"
+    },
+    "confirm_clear_history": {
+        "message": "Tem certeza que deseja limpar o histórico de busca?",
+        "description": "confirm clear history"
+    },
+    "confirm_reset_stats": {
+        "message": "Tem certeza que deseja resetar todas as estatísticas?",
+        "description": "confirm reset stats"
+    },
+    "label_notifications": {
+        "message": "Notificações",
+        "description": "notifications label"
+    },
+    "enable_price_alerts": {
+        "message": "Ativar Alertas de Preço",
+        "description": "enable price alerts toggle"
+    },
+    "enable_sound": {
+        "message": "Notificação Sonora",
+        "description": "enable sound toggle"
+    },
+    "price_threshold": {
+        "message": "Alertar quando preço estiver abaixo da média em",
+        "description": "price threshold label"
+    },
+    "items_cached": {
+        "message": "itens em cache",
+        "description": "items cached label"
+    },
+    "cache_status": {
+        "message": "Status do Cache",
+        "description": "cache status label"
+    },
+    "recent_searches": {
+        "message": "Buscas Recentes",
+        "description": "recent searches title"
+    },
+    "most_searched": {
+        "message": "Itens Mais Buscados",
+        "description": "most searched items title"
+    },
+    "section_notifications": {
+        "message": "🔔 Notificações",
+        "description": "notifications section title"
+    },
+    "label_price_alert": {
+        "message": "Alertas de preço baixo",
+        "description": "price alert toggle label"
+    },
+    "label_sound_alert": {
+        "message": "Notificação sonora",
+        "description": "sound alert toggle label"
+    },
+    "label_price_threshold": {
+        "message": "Limite do alerta",
+        "description": "price threshold label"
+    },
+    "label_below_avg": {
+        "message": "abaixo da média",
+        "description": "below average text"
+    },
+    "label_recent_searches": {
+        "message": "Buscas Recentes",
+        "description": "recent searches label"
+    },
+    "label_most_searched": {
+        "message": "Itens Mais Buscados",
+        "description": "most searched items label"
+    },
+    "label_cache_status": {
+        "message": "Status do Cache",
+        "description": "cache status label"
+    }
+}

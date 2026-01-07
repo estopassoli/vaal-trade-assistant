@@ -1,0 +1,661 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vaal Trade Assistant</title>
+    <link rel="stylesheet" href="./modules/toastify.min.css">
+    <script src="./modules/toastify.min.js"></script>
+    <style>
+        body {
+            width: 360px;
+            padding: 16px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e0e0e0;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            max-height: 580px;
+            overflow-y: auto;
+        }
+
+        body::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        body::-webkit-scrollbar-track {
+            background: rgba(37, 37, 64, 0.5);
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background: #f0c000;
+            border-radius: 3px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(240, 192, 0, 0.3);
+        }
+
+        .header h5 {
+            color: #f0c000;
+            margin: 0 0 4px 0;
+            font-weight: 600;
+            font-size: 18px;
+            text-shadow: 0 0 10px rgba(240, 192, 0, 0.3);
+        }
+
+        .header small {
+            color: #888;
+            font-size: 11px;
+        }
+
+        .section {
+            margin-bottom: 14px;
+        }
+
+        .section-title {
+            color: #f0c000;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+        }
+
+        .section-title:hover {
+            color: #ffd700;
+        }
+
+        .section-title .toggle-icon {
+            transition: transform 0.2s;
+        }
+
+        .section-title.collapsed .toggle-icon {
+            transform: rotate(-90deg);
+        }
+
+        .collapsible-content {
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .collapsible-content.collapsed {
+            max-height: 0 !important;
+        }
+
+        .form-label {
+            color: #aaa;
+            font-size: 12px;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .form-select, .form-control {
+            width: 100%;
+            padding: 8px 12px;
+            background-color: rgba(37, 37, 64, 0.8);
+            border: 1px solid #444;
+            border-radius: 6px;
+            color: #e0e0e0;
+            font-size: 13px;
+            box-sizing: border-box;
+        }
+
+        .form-select:focus, .form-control:focus {
+            outline: none;
+            border-color: #f0c000;
+            box-shadow: 0 0 0 2px rgba(240, 192, 0, 0.2);
+        }
+
+        .input-group {
+            display: flex;
+            gap: 6px;
+        }
+
+        .input-group .form-control {
+            flex: 1;
+        }
+
+        .btn {
+            padding: 8px 14px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .btn-get {
+            background-color: #444;
+            color: #e0e0e0;
+        }
+
+        .btn-get:hover {
+            background-color: #555;
+        }
+
+        .btn-save {
+            background-color: #f0c000;
+            color: #1a1a2e;
+        }
+
+        .btn-save:hover {
+            background-color: #d4a800;
+        }
+
+        .btn-danger {
+            background-color: #c0392b;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background-color: #e74c3c;
+        }
+
+        .btn-small {
+            padding: 4px 8px;
+            font-size: 10px;
+        }
+
+        .info-text {
+            font-size: 10px;
+            color: #666;
+            margin-top: 6px;
+        }
+
+        .status-msg {
+            font-size: 11px;
+            margin-top: 6px;
+            min-height: 16px;
+        }
+
+        .status-success { color: #4caf50; }
+        .status-error { color: #f44336; }
+        .status-warning { color: #ff9800; }
+
+        .connection-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            background: rgba(37, 37, 64, 0.8);
+            border-radius: 6px;
+            margin-bottom: 14px;
+        }
+
+        .connection-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .connection-dot.connected {
+            background: #4caf50;
+            box-shadow: 0 0 8px #4caf50;
+        }
+
+        .connection-dot.disconnected {
+            background: #f44336;
+            box-shadow: 0 0 8px #f44336;
+            animation: none;
+        }
+
+        .connection-dot.checking {
+            background: #ff9800;
+            box-shadow: 0 0 8px #ff9800;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .connection-text {
+            font-size: 12px;
+            flex: 1;
+        }
+
+        .btn-check {
+            background: transparent;
+            color: #888;
+            padding: 4px 8px;
+            font-size: 10px;
+        }
+
+        .btn-check:hover {
+            color: #f0c000;
+        }
+
+        .form-range {
+            width: 100%;
+            height: 6px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: rgba(37, 37, 64, 0.8);
+            border-radius: 3px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .form-range::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            background: #f0c000;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .form-range::-webkit-slider-thumb:hover {
+            background: #d4a800;
+        }
+
+        .form-range::-moz-range-thumb {
+            width: 16px;
+            height: 16px;
+            background: #f0c000;
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .stat-card {
+            background: rgba(37, 37, 64, 0.8);
+            border-radius: 6px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 18px;
+            font-weight: 600;
+            color: #f0c000;
+        }
+
+        .stat-label {
+            font-size: 9px;
+            color: #888;
+            margin-top: 2px;
+        }
+
+        /* History List */
+        .history-list {
+            max-height: 150px;
+            overflow-y: auto;
+            margin-bottom: 8px;
+        }
+
+        .history-list::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .history-list::-webkit-scrollbar-thumb {
+            background: #555;
+            border-radius: 2px;
+        }
+
+        .history-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 8px;
+            background: rgba(37, 37, 64, 0.6);
+            border-radius: 4px;
+            margin-bottom: 4px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .history-item:hover {
+            background: rgba(240, 192, 0, 0.2);
+        }
+
+        .history-item-name {
+            flex: 1;
+            font-size: 11px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .history-item-time {
+            font-size: 9px;
+            color: #666;
+        }
+
+        .history-item-type {
+            font-size: 9px;
+            padding: 2px 4px;
+            border-radius: 3px;
+            background: #444;
+        }
+
+        .history-item-type.similar { background: rgba(240, 192, 0, 0.3); color: #f0c000; }
+        .history-item-type.exact { background: rgba(76, 175, 80, 0.3); color: #4caf50; }
+        .history-item-type.base { background: rgba(33, 150, 243, 0.3); color: #2196f3; }
+
+        .empty-state {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 11px;
+        }
+
+        /* Checkbox toggle */
+        .toggle-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 0;
+        }
+
+        .toggle-label {
+            font-size: 12px;
+            color: #aaa;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 40px;
+            height: 20px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #444;
+            transition: 0.3s;
+            border-radius: 20px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 14px;
+            width: 14px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: 0.3s;
+            border-radius: 50%;
+        }
+
+        input:checked + .toggle-slider {
+            background-color: #f0c000;
+        }
+
+        input:checked + .toggle-slider:before {
+            transform: translateX(20px);
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 12px;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 8px;
+            background: rgba(37, 37, 64, 0.6);
+            border: none;
+            border-radius: 6px;
+            color: #888;
+            font-size: 11px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .tab:hover {
+            background: rgba(37, 37, 64, 0.9);
+            color: #e0e0e0;
+        }
+
+        .tab.active {
+            background: rgba(240, 192, 0, 0.2);
+            color: #f0c000;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .footer {
+            margin-top: 16px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(240, 192, 0, 0.3);
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 8px;
+        }
+
+        .footer a {
+            color: #888;
+            text-decoration: none;
+            font-size: 11px;
+            transition: color 0.2s;
+        }
+
+        .footer a:hover {
+            color: #f0c000;
+        }
+
+        .version {
+            color: #555;
+            font-size: 10px;
+        }
+
+        /* Price alert indicator */
+        .price-alert-badge {
+            background: #e74c3c;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-size: 9px;
+            margin-left: 6px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h5><img src="../icons/32.png" alt="icon" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 6px;">Vaal Trade Assistant</h5>
+        <small data-i18n="popup_subtitle">PoE2 Trade Search for poe.ninja</small>
+    </div>
+
+    <!-- Tabs Navigation -->
+    <div class="tabs">
+        <button class="tab active" data-tab="settings" data-i18n="tab_settings">⚙️ Settings</button>
+        <button class="tab" data-tab="history" data-i18n="tab_history">📜 History</button>
+        <button class="tab" data-tab="stats" data-i18n="tab_stats">📊 Stats</button>
+    </div>
+
+    <!-- Settings Tab -->
+    <div id="tab-settings" class="tab-content active">
+        <div class="connection-indicator">
+            <div id="connection-dot" class="connection-dot disconnected"></div>
+            <span id="connection-text" class="connection-text" data-i18n="status_checking">Checking connection...</span>
+            <button class="btn btn-check" type="button" id="btn-check-connection" data-i18n="btn_check">Check</button>
+        </div>
+
+        <div class="section">
+            <label class="form-label" data-i18n="label_language">Language</label>
+            <select id="ui-language" class="form-select">
+                <option value="en">English</option>
+                <option value="pt">Português</option>
+                <option value="es">Español</option>
+                <option value="zh_CN">中文</option>
+            </select>
+        </div>
+
+        <div class="section">
+            <label class="form-label" data-i18n="label_trade_type">Trade Type</label>
+            <select id="trade-type" class="form-select">
+                <option value="available" data-i18n="opt_instant_and_inperson">Instant Buyout & In Person</option>
+                <option value="securable" data-i18n="opt_instant_only">Instant Buyout Only</option>
+                <option value="online" data-i18n="opt_inperson">In Person (Online)</option>
+                <option value="any" data-i18n="opt_any">Any</option>
+            </select>
+        </div>
+
+        <div class="section">
+            <label class="form-label" data-i18n="label_league">League</label>
+            <select id="trade-league" class="form-select">
+                <option value="auto" data-i18n="opt_auto_detect">🔄 Auto-detect from URL</option>
+                <option value="Fate of the Vaal">Fate of the Vaal</option>
+                <option value="Hardcore Fate of the Vaal">HC Fate of the Vaal</option>
+                <option value="Standard">Standard</option>
+                <option value="Hardcore">Hardcore</option>
+            </select>
+            <p class="info-text" data-i18n="info_auto_detect">Auto-detect uses the league from the poe.ninja page URL.</p>
+        </div>
+
+        <div class="section">
+            <label class="form-label" data-i18n="label_poesessid">POESESSID (Required for trade search)</label>
+            <div class="input-group">
+                <input type="text" id="poe2-sessid" class="form-control" data-i18n-placeholder="placeholder_sessid" placeholder="Enter your POESESSID">
+                <button class="btn btn-get" type="button" id="btn-get-sessid" data-i18n="btn_get">Get</button>
+                <button class="btn btn-save" type="button" id="btn-save-sessid" data-i18n="btn_save">Save</button>
+            </div>
+            <div id="sessid-status" class="status-msg"></div>
+            <p class="info-text" data-i18n="info_sessid">Click "Get" to fetch POESESSID from pathofexile.com cookies automatically.</p>
+        </div>
+
+        <div class="section">
+            <label class="form-label"><span data-i18n="label_similar_percent">Similar Search Percentage</span>: <span id="similar-percent-value">80</span>%</label>
+            <input type="range" id="similar-percent" class="form-range" min="50" max="100" value="80">
+            <p class="info-text" data-i18n="info_similar_percent">Lower % = more results (flexible). Higher % = fewer results (stricter).</p>
+        </div>
+
+        <div class="section">
+            <label class="form-label" data-i18n="label_price_filters">Price Filters (Divine Orbs)</label>
+            <div class="input-group">
+                <input type="number" id="price-min" class="form-control" data-i18n-placeholder="placeholder_min" placeholder="Min" min="0" step="0.1">
+                <input type="number" id="price-max" class="form-control" data-i18n-placeholder="placeholder_max" placeholder="Max" min="0" step="0.1">
+                <button class="btn btn-save" type="button" id="btn-apply-filters" data-i18n="btn_apply">Apply</button>
+            </div>
+            <div id="price-status" class="status-msg"></div>
+        </div>
+
+        <!-- Notifications Section -->
+        <div class="section">
+            <div class="section-title" data-i18n="section_notifications">🔔 Notifications</div>
+            <div class="toggle-row">
+                <span class="toggle-label" data-i18n="label_price_alert">Low price alerts</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="enable-price-alert">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+            <div class="toggle-row">
+                <span class="toggle-label" data-i18n="label_sound_alert">Sound notification</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="enable-sound">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+            <div class="section" id="price-threshold-section" style="margin-top: 8px;">
+                <label class="form-label"><span data-i18n="label_price_threshold">Alert threshold</span>: <span id="price-threshold-value">30</span>% <span data-i18n="label_below_avg">below average</span></label>
+                <input type="range" id="price-threshold" class="form-range" min="10" max="70" value="30">
+            </div>
+        </div>
+    </div>
+
+    <!-- History Tab -->
+    <div id="tab-history" class="tab-content">
+        <div class="section">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                <span class="form-label" style="margin: 0;" data-i18n="label_recent_searches">Recent Searches</span>
+                <button class="btn btn-danger btn-small" id="btn-clear-history" data-i18n="btn_clear">Clear</button>
+            </div>
+            <div id="history-list" class="history-list">
+                <div class="empty-state" data-i18n="empty_history">No search history yet</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats Tab -->
+    <div id="tab-stats" class="tab-content">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value" id="stat-searches">0</div>
+                <div class="stat-label" data-i18n="stat_searches">Searches</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="stat-items">0</div>
+                <div class="stat-label" data-i18n="stat_items">Items</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="stat-time">0m</div>
+                <div class="stat-label" data-i18n="stat_time_saved">Time Saved</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="form-label" data-i18n="label_most_searched">Most Searched Items</div>
+            <div id="most-searched-list" class="history-list">
+                <div class="empty-state" data-i18n="empty_stats">No data yet</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="form-label" data-i18n="label_cache_status">Cache Status</div>
+            <div style="display: flex; gap: 8px; align-items: center;">
+                <span id="cache-count" style="font-size: 12px; color: #888;">0 items cached</span>
+                <button class="btn btn-danger btn-small" id="btn-clear-cache" data-i18n="btn_clear_cache">Clear Cache</button>
+            </div>
+        </div>
+
+        <div class="section" style="margin-top: 12px;">
+            <button class="btn btn-danger" id="btn-reset-stats" style="width: 100%;" data-i18n="btn_reset_stats">Reset All Statistics</button>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer-links">
+            <a href="https://github.com/estopassoli/vaal-trade-assistant" target="_blank" data-i18n="link_whats_new">🆕 What's New</a>
+            <a href="https://discordapp.com/users/r1kkie" target="_blank" data-i18n="link_report_bug">🐞 Report Bug</a>
+        </div>
+        <span id="version" class="version">v1.0.0</span>
+    </div>
+
+    <script src="./popup.js" type="module"></script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+{
+    "name": "__MSG_extension_name__",
+    "description": "__MSG_extension_description__",
+    "version": "1.1.0",
+    "manifest_version": 3,
+    "minimum_chrome_version": "93",
+    "default_locale": "en",
+    "icons": {
+        "16": "icons/16.png",
+        "32": "icons/32.png",
+        "64": "icons/64.png",
+        "128": "icons/128.png",
+        "256": "icons/256.png",
+        "512": "icons/512.png"
+    },
+    "action": {
+        "default_popup": "src/popup.html",
+        "default_icon": {
+            "16": "icons/16.png",
+            "32": "icons/32.png",
+            "64": "icons/64.png",
+            "128": "icons/128.png"
+        }
+    },
+    "background": {
+        "service_worker": "src/background.js",
+        "type": "module"
+    },
+    "permissions": [
+        "webRequest",
+        "scripting",
+        "storage",
+        "cookies"
+    ],
+    "host_permissions": [
+        "https://poe.ninja/*",
+        "https://www.pathofexile.com/*"
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "src/modules/toastify.min.js",
+                "src/modules/toastify.min.css"
+            ],
+            "matches": ["https://poe.ninja/*"]
+        }
+    ]
+}

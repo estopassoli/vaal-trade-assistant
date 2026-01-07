@@ -1,0 +1,354 @@
+{
+    "extension_name": {
+        "message": "Vaal Trade Assistant",
+        "description": "extension_name"
+    },
+    "extension_description": {
+        "message": "Path of Exile 2 快速交易搜索。直接从 poe.ninja 搜索官方交易站的物品。",
+        "description": "extension_description"
+    },
+    "popup_title": {
+        "message": "Vaal Trade Assistant",
+        "description": "popup title"
+    },
+    "popup_subtitle": {
+        "message": "poe.ninja 的 PoE2 交易搜索",
+        "description": "popup subtitle"
+    },
+    "label_language": {
+        "message": "语言",
+        "description": "language label"
+    },
+    "label_trade_type": {
+        "message": "交易类型",
+        "description": "trade type label"
+    },
+    "opt_instant_and_inperson": {
+        "message": "即时购买 & 面交",
+        "description": "trade type instant buyout and in person"
+    },
+    "opt_instant_only": {
+        "message": "仅即时购买",
+        "description": "trade type instant buyout"
+    },
+    "opt_inperson": {
+        "message": "面交（在线）",
+        "description": "trade type in person"
+    },
+    "opt_any": {
+        "message": "任意",
+        "description": "trade type any"
+    },
+    "label_league": {
+        "message": "联赛",
+        "description": "league label"
+    },
+    "opt_auto_detect": {
+        "message": "🔄 从URL自动检测",
+        "description": "auto detect league"
+    },
+    "opt_current_league": {
+        "message": "（当前）",
+        "description": "current league suffix"
+    },
+    "info_auto_detect": {
+        "message": "自动检测使用 poe.ninja 页面URL中的联赛。",
+        "description": "auto detect info"
+    },
+    "label_poesessid": {
+        "message": "POESESSID（交易搜索必需）",
+        "description": "poesessid label"
+    },
+    "placeholder_sessid": {
+        "message": "输入您的 POESESSID",
+        "description": "poesessid placeholder"
+    },
+    "btn_get": {
+        "message": "获取",
+        "description": "get button"
+    },
+    "btn_save": {
+        "message": "保存",
+        "description": "save button"
+    },
+    "info_sessid": {
+        "message": "点击「获取」自动从 pathofexile.com 的 cookies 中获取 POESESSID。",
+        "description": "sessid info"
+    },
+    "label_similar_percent": {
+        "message": "相似搜索百分比",
+        "description": "similar percent label"
+    },
+    "info_similar_percent": {
+        "message": "较低% = 更多结果（灵活）。较高% = 较少结果（严格）。",
+        "description": "similar percent info"
+    },
+    "label_price_filters": {
+        "message": "价格过滤（神圣石）",
+        "description": "price filters label"
+    },
+    "placeholder_min": {
+        "message": "最低",
+        "description": "min placeholder"
+    },
+    "placeholder_max": {
+        "message": "最高",
+        "description": "max placeholder"
+    },
+    "btn_apply": {
+        "message": "应用",
+        "description": "apply button"
+    },
+    "info_price_filters": {
+        "message": "点击「应用」刷新并使用新过滤器。",
+        "description": "price filters info"
+    },
+    "link_whats_new": {
+        "message": "🆕 新功能",
+        "description": "whats new link"
+    },
+    "link_report_bug": {
+        "message": "🐞 报告错误",
+        "description": "report bug link"
+    },
+    "status_checking": {
+        "message": "检查连接中...",
+        "description": "checking connection"
+    },
+    "status_connected": {
+        "message": "✓ 已连接到 PoE Trade API",
+        "description": "connected status"
+    },
+    "status_no_sessid": {
+        "message": "❌ 未配置 POESESSID",
+        "description": "no sessid status"
+    },
+    "status_expired": {
+        "message": "❌ 会话已过期 - 请刷新 POESESSID",
+        "description": "expired session"
+    },
+    "status_rate_limited": {
+        "message": "✓ API 可访问（速率受限）",
+        "description": "rate limited status"
+    },
+    "status_cannot_reach": {
+        "message": "⚠ 无法访问 PoE API",
+        "description": "cannot reach api"
+    },
+    "status_sessid_configured": {
+        "message": "✓ 会话ID已配置",
+        "description": "sessid configured"
+    },
+    "status_sessid_not_configured": {
+        "message": "⚠ 未配置 - 交易搜索将无法工作",
+        "description": "sessid not configured"
+    },
+    "status_fetching": {
+        "message": "获取cookie中...",
+        "description": "fetching cookie"
+    },
+    "status_cookie_found": {
+        "message": "✓ 已找到Cookie！点击保存以存储。",
+        "description": "cookie found"
+    },
+    "status_cookie_not_found": {
+        "message": "未找到Cookie。正在打开 PoE trade...",
+        "description": "cookie not found"
+    },
+    "status_please_login": {
+        "message": "请登录 PoE，然后再次点击「获取」",
+        "description": "please login"
+    },
+    "status_sessid_saved": {
+        "message": "✓ 会话ID已保存！",
+        "description": "sessid saved"
+    },
+    "status_enter_valid_sessid": {
+        "message": "请输入或获取有效的会话ID",
+        "description": "enter valid sessid"
+    },
+    "status_applying_filters": {
+        "message": "应用过滤器中...",
+        "description": "applying filters"
+    },
+    "status_filter_saved": {
+        "message": "✓ 已保存: {min} - {max} 神圣石（刷新以应用）",
+        "description": "filter saved"
+    },
+    "status_filter_cleared": {
+        "message": "✓ 过滤器已清除（刷新以应用）",
+        "description": "filter cleared"
+    },
+    "btn_check": {
+        "message": "检查",
+        "description": "check button"
+    },
+    "open_all_btn": {
+        "message": "打开所有物品",
+        "description": "open all items button"
+    },
+    "open_all_processing": {
+        "message": "处理中...",
+        "description": "processing"
+    },
+    "open_all_collecting": {
+        "message": "收集物品中...",
+        "description": "collecting items"
+    },
+    "open_all_no_items": {
+        "message": "未找到物品！",
+        "description": "no items found"
+    },
+    "open_all_found": {
+        "message": "找到 {count} 个物品",
+        "description": "items found"
+    },
+    "open_all_progress": {
+        "message": "处理中 {current}/{total}",
+        "description": "processing progress"
+    },
+    "open_all_waiting": {
+        "message": "等待速率限制... {seconds}秒",
+        "description": "waiting rate limit"
+    },
+    "open_all_done": {
+        "message": "完成！已打开 {count} 个物品。",
+        "description": "done"
+    },
+    "open_all_errors": {
+        "message": "{count} 个错误",
+        "description": "errors count"
+    },
+    "open_all_success": {
+        "message": "所有物品已成功打开！",
+        "description": "all success"
+    },
+    "open_all_cancelled": {
+        "message": "已取消！已打开 {count} 个物品。",
+        "description": "cancelled"
+    },
+    "open_all_cancelling": {
+        "message": "取消中...",
+        "description": "cancelling"
+    },
+    "btn_cancel": {
+        "message": "取消",
+        "description": "cancel button"
+    },
+    "tab_settings": {
+        "message": "设置",
+        "description": "settings tab"
+    },
+    "tab_history": {
+        "message": "历史",
+        "description": "history tab"
+    },
+    "tab_stats": {
+        "message": "统计",
+        "description": "stats tab"
+    },
+    "stat_searches": {
+        "message": "搜索次数",
+        "description": "total searches stat"
+    },
+    "stat_items": {
+        "message": "物品数量",
+        "description": "total items stat"
+    },
+    "stat_time_saved": {
+        "message": "节省时间",
+        "description": "time saved stat"
+    },
+    "empty_history": {
+        "message": "暂无搜索历史。开始搜索物品吧！",
+        "description": "empty history message"
+    },
+    "empty_stats": {
+        "message": "暂无统计数据。开始使用扩展吧！",
+        "description": "empty stats message"
+    },
+    "btn_clear_history": {
+        "message": "清除",
+        "description": "clear history button"
+    },
+    "btn_clear_cache": {
+        "message": "清除缓存",
+        "description": "clear cache button"
+    },
+    "btn_reset_stats": {
+        "message": "重置",
+        "description": "reset stats button"
+    },
+    "confirm_clear_history": {
+        "message": "确定要清除搜索历史吗？",
+        "description": "confirm clear history"
+    },
+    "confirm_reset_stats": {
+        "message": "确定要重置所有统计数据吗？",
+        "description": "confirm reset stats"
+    },
+    "label_notifications": {
+        "message": "通知",
+        "description": "notifications label"
+    },
+    "enable_price_alerts": {
+        "message": "启用价格提醒",
+        "description": "enable price alerts toggle"
+    },
+    "enable_sound": {
+        "message": "声音通知",
+        "description": "enable sound toggle"
+    },
+    "price_threshold": {
+        "message": "当价格低于平均价格时提醒",
+        "description": "price threshold label"
+    },
+    "items_cached": {
+        "message": "个物品已缓存",
+        "description": "items cached label"
+    },
+    "cache_status": {
+        "message": "缓存状态",
+        "description": "cache status label"
+    },
+    "recent_searches": {
+        "message": "最近搜索",
+        "description": "recent searches title"
+    },
+    "most_searched": {
+        "message": "最常搜索的物品",
+        "description": "most searched items title"
+    },
+    "section_notifications": {
+        "message": "🔔 通知",
+        "description": "notifications section title"
+    },
+    "label_price_alert": {
+        "message": "低价提醒",
+        "description": "price alert toggle label"
+    },
+    "label_sound_alert": {
+        "message": "声音通知",
+        "description": "sound alert toggle label"
+    },
+    "label_price_threshold": {
+        "message": "提醒阈值",
+        "description": "price threshold label"
+    },
+    "label_below_avg": {
+        "message": "低于平均价格",
+        "description": "below average text"
+    },
+    "label_recent_searches": {
+        "message": "最近搜索",
+        "description": "recent searches label"
+    },
+    "label_most_searched": {
+        "message": "最常搜索的物品",
+        "description": "most searched items label"
+    },
+    "label_cache_status": {
+        "message": "缓存状态",
+        "description": "cache status label"
+    }
+}
