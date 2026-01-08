@@ -1,4 +1,4 @@
-# 🔮 Vaal Trade Assistant
+# Vaal Trade Assistant
 
 A Chrome extension that adds quick trade search buttons to items on poe.ninja for Path of Exile 2.
 
@@ -37,4 +37,3 @@ A Chrome extension that adds quick trade search buttons to items on poe.ninja fo
 ## License
 
 MIT License
-- To avoid numerous grammatical errors in my poor English, this README was translated using Copilot and manually corrected for inaccuracies.
